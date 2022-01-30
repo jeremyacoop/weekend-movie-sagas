@@ -29,6 +29,7 @@ function* fetchAllMovies() {
         
 }
 
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 

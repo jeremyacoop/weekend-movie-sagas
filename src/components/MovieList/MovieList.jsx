@@ -13,18 +13,13 @@ function MovieList() {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
-    // const handleClick = (evt, action) => {
-        // evt.preventDefault();
-        // history.push(`/details/${action.id}`);
-    // }
-
     return (
         <main>
             <h1>MovieList</h1>
             <section className="movies">
                 {movies.map(movie => {
                     return (
-                        <div key={movie.id} onClick={(evt) => history.push(`/details/${movie.id}`)}>
+                        <div key={movie.id} onClick={() => history.push(`/details`)}>
                             <h3>{movie.title}</h3>
                             <img src={movie.poster} alt={movie.title}/>
                         </div>

@@ -7,37 +7,37 @@ function MovieDetails() {
 
     const params = useParams();
     const dispatch = useDispatch();
-    const [movie, setMovie] = useState(null);
-    // movie = useSelector(store => store.movies);
+    // const [movie, setMovie] = useState(null);
+    const movie = useSelector(store => store.movies);
 
     useEffect(() => {
-        axios.get(`/details/${params.id}`)
-        .then(res => {
-            setMovie(res.data);
+        // axios.get(`/details/${params.id}`)
+        // .then(res => {
+            // setMovie(params.id);
             dispatch({
-                type: 'SET_ACTIVE_MOVIE',
-                payload: res.data
-            })
-        })
-        .catch(err => {
-            console.error(err);
-        })
+                type: 'FETCH_ACTIVE_MOVIE',
+                payload: params.id
+            });
+        // })
+        // .catch(err => {
+            // console.error(err);
+        // })
     }, [params.id]);
 
-    console.log(movie);
+    console.log(params);
 
     return (
         <main>
             <h1>Movie Details</h1>
             <section className="movie-details">
                 <div>
-                    <img src={params.poster} alt={params.title} />
+                    <img src={params.poster} alt={movie.title} />
                 </div>
                 <div>Testing123
-                    {params.title}
+                    {movie.title}
                 </div>
                 <div>
-                    {params.description}
+                    {movie.description}
                 </div>
             </section>
         </main>
